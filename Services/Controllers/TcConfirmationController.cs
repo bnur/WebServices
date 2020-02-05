@@ -15,7 +15,8 @@ namespace Services.Controllers
         // GET: api/TcConfirmation
         public string Get()
         {
-            return "Running..";
+            string message = "If you want Tc Confirmation, consider the following data types; \n TCKN:long | FirstName:string | LastName:string | BirthYear:int";
+            return message;
         }
 
         // POST: api/TcConfirmation
@@ -24,20 +25,19 @@ namespace Services.Controllers
             bool result = false;
             try
             {
-                if (value.TCKN != null && value.FirstName != null && value.LastName != null && value.BirthYear != null)
+                if (value!=null && value.TCKN.ToString().Length==11 && !string.IsNullOrEmpty(value.FirstName) && !string.IsNullOrEmpty(value.LastName) && value.BirthYear.ToString().Length==4)
                 {
                     TcConfirmationService.KPSPublicSoapClient confirmation = new TcConfirmationService.KPSPublicSoapClient();
                     result = confirmation.TCKimlikNoDogrula(value.TCKN, value.FirstName.Trim().ToUpper(), value.LastName.Trim().ToUpper(), value.BirthYear);
-                    //logFile.Message = "Başarılı";
                 }
                 else
                 {
-                    //logFile.Message="Hata! Bilgilerden bir veya daha fazlası eksik.";
+                    logFile.Message="Hata! Bilgiler hatalı veya eksik!";
                 }
             }
             catch (Exception e)
             {
-                //logFile.Message = e.Message;
+                logFile.Message = e.Message;
                 throw;
             }
             return result;

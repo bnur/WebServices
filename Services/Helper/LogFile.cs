@@ -20,10 +20,19 @@ namespace Services.Helper
 
         public void ErrorLog(string message)
         {
-            StreamWriter sw = new StreamWriter("../../"+ PathName,true);
-            sw.WriteLine(Date.ToString()+": "+Message);
-            sw.Flush();
-            sw.Close();
+            StreamWriter sw = null;
+            try
+            {
+                sw = new StreamWriter(AppDomain.CurrentDomain.BaseDirectory + "\\" + PathName + ".txt", true);
+                sw.WriteLine(Date.ToString() + " :" + message);
+                sw.Flush();
+                sw.Close();
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

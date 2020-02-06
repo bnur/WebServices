@@ -103,9 +103,19 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Connected Services\ForeignTcConfirmationService\KPSPublicYabanciDogrula.wsdl" />
+    <Content Include="Connected Services\ForeignTcConfirmationService\Services.ForeignTcConfirmationService.YabanciKimlikNoDogrulaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <None Include="Connected Services\TcConfirmationService\configuration91.svcinfo" />
     <None Include="Connected Services\TcConfirmationService\configuration.svcinfo" />
     <None Include="Connected Services\TcConfirmationService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Connected Services\ForeignTcConfirmationService\configuration91.svcinfo" />
+    <None Include="Connected Services\ForeignTcConfirmationService\configuration.svcinfo" />
+    <None Include="Connected Services\ForeignTcConfirmationService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -119,16 +129,23 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Connected Services\ForeignTcConfirmationService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\TcConfirmationService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\ForeignTcConfirmationController.cs" />
     <Compile Include="Controllers\TcConfirmationController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\LogFile.cs" />
+    <Compile Include="Models\ForeignTC.cs" />
     <Compile Include="Models\TC.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -150,6 +167,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\ForeignTcConfirmationService\" />
     <WCFMetadataStorage Include="Connected Services\TcConfirmationService\" />
   </ItemGroup>
   <PropertyGroup>

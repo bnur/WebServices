@@ -11,7 +11,7 @@ namespace Services.Controllers
 {
     public class TcConfirmationController : ApiController
     {
-        LogFile logFile = new LogFile("ServiceLogs");
+        LogFile logFile = new LogFile("TcConfirmationServiceLogs");
         // GET: api/TcConfirmation
         public string Get()
         {
